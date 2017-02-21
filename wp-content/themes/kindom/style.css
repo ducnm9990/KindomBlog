@@ -1,0 +1,19 @@
+/*
+Theme Name: Kindom 
+Theme URI: http://ownego.com/our-works/wp/themes/kindom
+Author: ducnm 
+Author URI: http://ownego.com
+Description: Amazing wordpress theme kindom 
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+This theme, like WordPress, is licensed under the GPL.
+*/
+
+@import url('bootstrap/css/bootstrap.css');
+@import url('bootstrap/css/bootstrap-responsive.css');
+
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
