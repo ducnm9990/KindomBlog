@@ -6,7 +6,6 @@
  */
 
 $themeIncludes = array(
-	'funcs/visual-composer.php',	// Visual Composer 
 	'funcs/constant.php',			// Constant
   	'funcs/helper.php',		  		// Helper function
   	'funcs/activate.php',		  	// Activate function
