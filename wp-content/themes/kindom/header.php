@@ -49,7 +49,7 @@
                     <li><a href="#">Blog</a></li>
                     <?php else:?>
 					<?php foreach($pageObjects as $pageObject):?>
-                    <li><a href="#pageSection<?php echo $pageObject->ID?>"><?php echo get_the_title($pageObject->ID)?></a></li>
+                    <li><a href="#pageSection<?php echo $pageObject->ID?>"><?php echo get_field('page_menu_anchor_name', $pageObject->ID)?></a></li>
 					<?php endforeach;?>
                     <?php endif;?>
                 </ul>

@@ -41,23 +41,7 @@
                     <div class="foot-col">
                         <div class="foot-col-title">Drop us a line</div>
                         <div class="foot-col-content">
-                            <form name="form_contact">
-                                <div class="form-group">
-                                	<label>Name</label>
-                                	<input class="form-control" type="text" name="name">
-                                </div>
-                                <div class="form-group">
-                                	<label>Email</label>
-                                	<input class="form-control" type="text" name="email">
-                                </div>
-                                <div class="form-group">
-                                	<label>Message</label>
-                                	<textarea class="form-control" name="message" rows="5" cols="15"></textarea>
-                                </div>
-                                <div class="form-group">
-                                	<button class="btn btn-primary btn-contact-submit" type="submit">Send</button>
-                                </div>
-                            </form>
+                        	<?php echo do_shortcode('[contact-form-7 id="5867" title="Contact form"]');?>
                         </div>
                     </div>
                 </div>

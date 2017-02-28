@@ -11,6 +11,8 @@ get_header();
 
 <?php 
 	$backgroundImage = get_field('page_background_image');
+	$backgroundGradientColor1 = get_field('page_background_color_1');
+	$backgroundGradientColor2 = get_field('page_background_color_2');
 	$title = get_the_title();
 	$subtitle = get_field('page_subtitle');
 	$pageObjects = get_field('page_multi_pages');
@@ -32,7 +34,12 @@ get_header();
                     </div>
                 </div>
             </div>
-            <div class="section-mobile-description">
+            <div 
+            	class="section-mobile-description"
+            	<?php if($backgroundGradientColor1 && $backgroundGradientColor2):?>
+            	style="background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -webkit-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -moz-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -o-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -ms-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));"
+            	<?php endif;?>
+            >
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12">
@@ -69,6 +76,8 @@ get_header();
     	foreach($pageObjects as $pageObject):
     		$pageID = $pageObject->ID;
 			$pageBackgroundImage = get_field('page_background_image', $pageID);
+			$pageBackgroundGradientColor1 = get_field('page_background_color_1', $pageID);
+			$pageBackgroundGradientColor2 = get_field('page_background_color_2', $pageID);
 			$pageTitle = get_the_title($pageID);
 			$pageSubtitle= get_field('page_subtitle', $pageID);
 			$pageExpandedContentTitle = get_field('page_expanded_content_title', $pageID);
@@ -88,7 +97,12 @@ get_header();
                     </div>
                 </div>
             </div>
-            <div class="section-mobile-description">
+            <div 
+            	class="section-mobile-description"
+            	<?php if($pageBackgroundGradientColor1 && $pageBackgroundGradientColor2):?>
+            	style="background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $pageBackgroundGradientColor1?>), to(<?php echo $pageBackgroundGradientColor2?>));background: -webkit-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $pageBackgroundGradientColor1?>), to(<?php echo $pageBackgroundGradientColor2?>));background: -moz-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $pageBackgroundGradientColor1?>), to(<?php echo $pageBackgroundGradientColor2?>));background: -o-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $pageBackgroundGradientColor1?>), to(<?php echo $pageBackgroundGradientColor2?>));background: -ms-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $pageBackgroundGradientColor1?>), to(<?php echo $pageBackgroundGradientColor2?>));"
+            	<?php endif;?>
+            >
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12">

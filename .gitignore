@@ -4,5 +4,6 @@
 .ftpquota
 .settings
 
-##### _Upload directories #####
+##### Directories #####
+docs
 wp-content/_uploads
