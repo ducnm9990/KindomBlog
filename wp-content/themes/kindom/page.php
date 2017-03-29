@@ -6,31 +6,28 @@
 	$backgroundImage = get_field('page_background_image');
 	$backgroundGradientColor1 = get_field('page_background_color_1');
 	$backgroundGradientColor2 = get_field('page_background_color_2');
-	$title = get_the_title();
-	$subtitle = get_field('page_subtitle');
 	$expandedContentTitle = get_field('page_expanded_content_title');
+	$padding = get_field('page_padding');
 ?>
 
 <main>
-    <section class="home-section <?php echo get_field('page_is_text_color_reversed') ? 'color-reverse' : ''?>">
+    <section class="home-section <?php if($backgroundImage):?>full-cover-section<?php endif;?><?php echo get_field('page_is_text_color_reversed') ? ' color-reverse' : ''?>">
+    
+    	<?php if($backgroundImage):?>
         <div class="section-mobile visible-xs">
             <div 
-            	class="section-image full-cover"
+            	class="section-image <?php if($backgroundImage):?>full-cover<?php endif;?>"
             	<?php if($backgroundImage):?> 
             	style="background-image:url('<?php echo $backgroundImage;?>')"
             	<?php elseif($backgroundGradientColor1 && $backgroundGradientColor2):?>
             	style="background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -webkit-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -moz-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -o-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -ms-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));"
+            	<?php elseif($backgroundGradientColor1):?>
+            	style="background: <?php echo $backgroundGradientColor1?>;<?php echo $padding ? ('padding: ' . $padding . 'em') : ''?>"
             	<?php endif;?>
             >
                 <div class="section-content">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-xs-9 col-sm-6 col-md-6">
-                                <div class="section-text">
-                                    <h1 class="main-title"><?php echo $title;?></h1>
-                                </div>
-                            </div>
-                        </div>
+						<?php the_content();?>
                     </div>
                 </div>
             </div>
@@ -38,55 +35,48 @@
             	class="section-mobile-description"
             	<?php if($backgroundGradientColor1 && $backgroundGradientColor2):?>
             	style="background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -webkit-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -moz-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -o-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -ms-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));"
+            	<?php elseif($backgroundGradientColor1):?>
+            	style="background: <?php echo $backgroundGradientColor1?>"
             	<?php endif;?>
             >
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <div class="section-text">
-                            	<?php if($subtitle):?>
-                                <h2 class="main-subtitle"><?php echo $subtitle;?></h2>
-                                <?php endif;?>
-                                <p class="section-description font-light"><?php the_content();?></p>
-                                <?php if($expandedContentTitle):?>
-								<a class="btn-show-more" href="javascript:void(0);">See more</a>
-								<?php endif;?>
-                            </div>
-                        </div>
-                    </div>
+					<?php the_content();?>
                 </div>
             </div>
         </div>
         <div 
-        	class="section-desktop full-cover hidden-xs" 
+        	class="section-desktop hidden-xs <?php if($backgroundImage):?>full-cover<?php endif;?>" 
 			<?php if($backgroundImage):?> 
 			style="background-image:url('<?php echo $backgroundImage;?>')"
 			<?php elseif($backgroundGradientColor1 && $backgroundGradientColor2):?>
 			style="background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -webkit-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -moz-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -o-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -ms-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));"
+			<?php elseif($backgroundGradientColor1):?>
+			style="background: <?php echo $backgroundGradientColor1?>;<?php echo $padding ? ('padding: ' . $padding . 'em') : ''?>"
 			<?php endif;?>
         >
             <div class="section-content">
                 <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-6 <?php if(get_field('page_content_position')):?>col-sm-offset-6 col-md-offset-6<?php endif;?>">
-                            <div class="section-text">
-                                <h1 class="main-title"><?php echo $title?></h1>
-                            	<?php if($subtitle):?>
-                                <h2 class="main-subtitle"><?php echo $subtitle;?></h2>
-                                <?php endif;?>
-                                <p class="section-description font-light"><?php the_content();?></p>
-                                <?php if($expandedContentTitle):?>
-								<a class="btn-show-more" href="javascript:void(0);" data-target="#expandedContent<?php echo implode('', explode(' ', $title))?>">See more</a>
-								<?php endif;?>
-                            </div>
-                        </div>
-                    </div>
+                	<?php the_content();?>
                 </div>
             </div>
         </div>
+        <?php else:?>
+        <div 
+        	class="section-content"
+			<?php if($backgroundGradientColor1 && $backgroundGradientColor2):?>
+			style="background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -webkit-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -moz-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -o-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));background: -ms-linear-gradient(linear, 0% 0%, 0% 100%, from(<?php echo $backgroundGradientColor1?>), to(<?php echo $backgroundGradientColor2?>));"
+			<?php elseif($backgroundGradientColor1):?>
+			style="background: <?php echo $backgroundGradientColor1?>;<?php echo $padding ? ('padding: ' . $padding . 'em') : ''?>"
+			<?php endif;?>
+        >
+        	<div class="container">
+        		<?php the_content();?>
+        	</div>
+        </div>
+        <?php endif;?>
     </section>
     <?php if($expandedContentTitle):?>
-    <section id="expandedContent<?php echo implode('', explode(' ', $title))?>" class="home-section help-detail-section">
+    <section id="expandedContent<?php echo implode('', explode(' ', $title))?>" class="home-section help-detail-section expanded-section">
         <h1 class="main-title section-title text-center"><?php echo $expandedContentTitle?></h1>
         <?php if(have_rows('page_expanded_content_rows')):?>
         	<?php 

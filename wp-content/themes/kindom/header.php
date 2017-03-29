@@ -39,6 +39,20 @@
                 </h1>
             </div>
 			<?php $pageObjects = get_field('page_multi_pages', $post->ID);?>
+			<?php 
+				wp_nav_menu( array(
+					'menu'              => 'primary',
+					'theme_location'    => 'primary',
+					'depth'             => 2,
+					'container'         => 'div',
+					'container_class'   => 'collapse navbar-collapse ' . ($pageObjects ? 'navbar-page' : ''),
+					'container_id'      => 'mainNav',
+					'menu_class'        => 'nav navbar-nav navbar-right',
+					'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+					'walker'            => new wp_bootstrap_navwalker())
+				);
+			?>
+			<?php /* ?>
             <div class="collapse navbar-collapse <?php echo $pageObjects ? 'navbar-page' : ''?>" id="mainNav">
                 <ul class="nav navbar-nav navbar-right">
                 	<?php if(!$pageObjects):?>
@@ -54,6 +68,7 @@
                     <?php endif;?>
                 </ul>
             </div>
+            <?php */ ?>
         </div>
     </nav>
 </header>
